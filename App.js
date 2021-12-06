@@ -7,7 +7,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -28,6 +28,13 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import Crashes from 'appcenter-crashes';
+
+const checkPreviousSession = async () => {
+  const didCrash = await Crashes.hasCrashedInLastSession();
+  if (didCrash) {
+    alert('Sorry about that crash, we are working on it');
+  }
+};
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -61,6 +68,9 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  useEffect(() => {
+    checkPreviousSession();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
