@@ -27,7 +27,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {BUILDER_KEYS} from '@babel/types';
+import Crashes from 'appcenter-crashes';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -82,9 +82,10 @@ const App: () => Node = () => {
           </Text>
           <Button
             title="Crash"
-            onPress={() => {
-              throw new Error('crash text');
-            }}
+            onPress={() => Crashes.generateTestCrash()}
+            // onPress={() => {
+            //   throw new Error('crash text');
+            // }}
           />
         </View>
       </ScrollView>
