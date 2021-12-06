@@ -32,6 +32,7 @@ import Crashes from 'appcenter-crashes';
 const checkPreviousSession = async () => {
   const didCrash = await Crashes.hasCrashedInLastSession();
   if (didCrash) {
+    const report = await Crashes.lastSessionCrashReport();
     alert('Sorry about that crash, we are working on it');
   }
 };
