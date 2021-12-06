@@ -17,6 +17,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
 
 import {
@@ -79,6 +80,12 @@ const App: () => Node = () => {
             }}>
             Hello World!
           </Text>
+          <Button
+            title="Crash"
+            onPress={() => {
+              throw new Error('crash text');
+            }}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
