@@ -98,6 +98,10 @@ const App: () => Node = () => {
             //   throw new Error('crash text');
             // }}
           />
+          <Button
+            title="Second"
+            onPress={() => alert("Pushed second Button")}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
